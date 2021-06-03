@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_view"
+    app:startDestination="@id/fragmentInput">
+  <fragment
+      android:id="@+id/fragmentInput"
+      android:name="com.example.assc_android_task.ui.input.layout.FragmentInput"
+      tools:layout="@layout/fragment_input"
+      android:label="FragmentInput">
+    <action
+        android:id="@+id/action_fragmentInput_to_fragmentGradient"
+        app:destination="@id/fragmentGradient" />
+  </fragment>
+  <fragment
+      android:id="@+id/fragmentSummary"
+      android:name="com.example.assc_android_task.ui.summary.layout.FragmentSummary"
+      tools:layout="@layout/fragment_summary"
+      android:label="FragmentSummary">
+    <argument
+        android:name="read_list"
+        android:defaultValue="@null"
+        app:argType="string[]"
+        app:nullable="true" />
+  </fragment>
+  <fragment
+      android:id="@+id/fragmentGradient"
+      android:name="com.example.assc_android_task.ui.gredient.layout.FragmentGradient"
+      tools:layout="@layout/fragment_gradient"
+      android:label="FragmentGradient">
+    <action
+        android:id="@+id/action_fragmentGradient_to_fragmentSummary"
+        app:destination="@id/fragmentSummary" />
+    <argument
+        android:name="read_list"
+        android:defaultValue="@null"
+        app:argType="string[]"
+        app:nullable="true" />
+  </fragment>
+</navigation>

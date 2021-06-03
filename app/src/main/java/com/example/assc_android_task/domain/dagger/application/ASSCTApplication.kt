@@ -1,9 +1,9 @@
-package com.example.assc_android_task.dagger.application
+package com.example.assc_android_task.domain.dagger.application
 
 import android.app.Application
-import com.example.assc_android_task.dagger.ApplicationComponent
-import com.example.assc_android_task.dagger.DaggerApplicationComponent
-import com.example.assc_android_task.dagger.modules.main.AppModule
+import com.example.assc_android_task.domain.dagger.ApplicationComponent
+import com.example.assc_android_task.domain.dagger.DaggerApplicationComponent
+import com.example.assc_android_task.domain.dagger.modules.main.AppModule
 
 class ASSCTApplication: Application()
 {
@@ -12,9 +12,9 @@ class ASSCTApplication: Application()
     initDagger()
   }
   private fun initDagger(){
-    appComponent =
+      appComponent =
       DaggerApplicationComponent.builder().application(this).appModule(AppModule(this)).build()
-    appComponent.inject(this)
+      appComponent.inject(this)
   }
 
   //MARK:- component

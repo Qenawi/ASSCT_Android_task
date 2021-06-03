@@ -3,21 +3,13 @@ plugins {
   kotlin("android")
   kotlin("android.extensions")
   kotlin("kapt")
+  id("androidx.navigation.safeargs")
   // MARK : klint
   id("org.jlleitschuh.gradle.ktlint")
   id("org.jlleitschuh.gradle.ktlint-idea")
 }
 
  android {
-  signingConfigs {
-    create("app_sigin") {
-      storeFile =
-        file("/home/cashless/Desktop/android/android_personal-digital-assistant/PDAKEY.jks")
-      storePassword = "123456"
-      keyPassword = "123456"
-      keyAlias = "key0"
-    }
-  }
   compileSdkVersion(30)
   defaultConfig {
     minSdkVersion(Libraries.Apps.minSdk)
@@ -27,7 +19,6 @@ plugins {
     multiDexEnabled = true
     setProperty("archivesBaseName", "$applicationId-v$versionName($versionCode)")
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    signingConfig = signingConfigs.getByName("app_sigin")
   }
   dataBinding {
     isEnabled = true
@@ -72,6 +63,8 @@ dependencies {
   kapt(Libraries.AssistedInject.processorDagger2)
   implementation(Libraries.Google.playServiceLocation)
   // MARK : - Dynamic App Libs
+  implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
+  implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
   // MARK : - Image View
   implementation("de.hdodenhof:circleimageview:3.1.0")
   implementation("com.github.jkwiecien:EasyImage:3.0.4")

@@ -1,4 +1,4 @@
-package com.example.assc_android_task.dagger.modules.main
+package com.example.assc_android_task.domain.dagger.modules.main
 
 import android.app.Application
 import android.content.Context
@@ -11,15 +11,4 @@ class AppModule(val app: Application) {
   @Singleton
   @Provides
   fun provideAppContext(): Context = app.applicationContext
-
-  /*
-  @Reusable
-  @Provides
-  fun provideSharedPrefs(app: Application): SharedPreferences
-  {
-    app.getPrefs()
-    return app.getSharedPreferences(app.getString(R.string.app_prefs), 0)
-  }
-
-   */
 }

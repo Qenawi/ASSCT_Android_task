@@ -1,10 +1,13 @@
-package com.example.assc_android_task.dagger
+package com.example.assc_android_task.domain.dagger
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.assc_android_task.ui.gredient.viewmodel.GradientViewModel
+import com.example.assc_android_task.ui.input.viewmodel.InputViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
+import dagger.multibindings.IntoMap
 import javax.inject.Inject
 import javax.inject.Provider
 import javax.inject.Singleton
@@ -43,10 +46,16 @@ abstract class ViewModelFactoryBindingModule {
   @Binds
   internal abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
 
-  /*
   @Binds
   @IntoMap
-  @ViewModelKey(LoginViewModel::class)
-  abstract fun bindLoginModel(vm: LoginViewModel): ViewModel
-  */
+  @ViewModelKey(InputViewModel::class)
+  abstract fun bindInputViewModel(vm: InputViewModel): ViewModel
+
+
+  @Binds
+  @IntoMap
+  @ViewModelKey(GradientViewModel::class)
+  abstract fun bindGradientViewModel(vm: GradientViewModel): ViewModel
+
+
 }

@@ -12,7 +12,7 @@ object Libraries {
         //  const val ktlint = "0.29.0"
 
         const val gradle = "3.6.1"
-        const val kotlin = "1.3.72"
+        const val kotlin = "1.4.31"
         const val appcompat = "1.0.2"
         const val playService = "4.3.3"
 
