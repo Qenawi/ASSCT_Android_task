@@ -7,7 +7,7 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       >
-
+    <!-- summary button -->
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
@@ -15,19 +15,19 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:textSize="16sp"
+        android:enabled="@{viewModel.obsShowProgressBar}"
+        android:onClick="@{()->viewModel.OpenSummary()}"
         android:text="@string/gradient_show_summry"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         />
+    <!-- gradient list -->
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="12dp"
-        adapter="@{viewModel.adapter}"
-        tools:listitem="@layout/gradient_item"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_marginEnd="12dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
@@ -35,8 +35,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        adapter="@{viewModel.adapter}"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/gradient_item"
         />
   </androidx.constraintlayout.widget.ConstraintLayout>
+  <!-- dataSrc -->
   <data>
     <variable
         name="viewModel"

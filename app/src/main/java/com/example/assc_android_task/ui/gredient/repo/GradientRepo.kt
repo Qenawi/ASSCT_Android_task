@@ -11,20 +11,22 @@ import com.example.assc_android_task.domain.network.validateType
 import com.example.assc_android_task.ui.gredient.model.AdapterItem
 import javax.inject.Inject
 
+//MARK:- Gradient Repository @Docs
 interface GradientRepo {
-  fun getitemInfo(string: String): Either<Failure, AdapterItem>
+  fun getItemInfo(string: String): Either<Failure, AdapterItem>
 
+  //MARK:- Network Module
   class NetWork @Inject constructor(
     val retrofit: RetrofitService,
     val network: NetworkHandler
   ) : GradientRepo {
-    override fun getitemInfo(string: String): Either<Failure, AdapterItem> {
+    override fun getItemInfo(string: String): Either<Failure, AdapterItem> {
       return pullFromRequest(
         network,
         call = retrofit.single_food_item(
           app_id = RetrofitApi.AppId, app_key = RetrofitApi.AppKey, ingred = string
         ), validate = { a -> a.validateType() },
-        transform = { a -> a.asJsonObject.mMapToObject<AdapterItem>() }, acceptunFormated = true
+        transform = { a -> a.asJsonObject.mMapToObject() }, acceptunFormated = true
       )
     }
   }

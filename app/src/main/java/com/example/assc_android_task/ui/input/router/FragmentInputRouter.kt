@@ -14,8 +14,7 @@ import com.example.assc_android_task.ui.input.layout.FragmentInputDirections.Act
 import com.google.android.material.navigation.NavigationView
 
 object FragmentInputRouter {
-  val FragmentInputToFragmentGradientListKey = "mListKey"
-
+ //MARK:- open gradient fragment
   fun openGradientList(
     fragment: Fragment,
     data: ArrayList<String>

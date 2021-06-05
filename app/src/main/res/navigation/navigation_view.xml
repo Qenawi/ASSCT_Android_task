@@ -23,6 +23,11 @@
         android:defaultValue="@null"
         app:argType="string[]"
         app:nullable="true" />
+    <action
+        android:id="@+id/action_fragmentSummary_to_fragmentInput"
+        app:popUpToInclusive="true"
+        app:popUpTo="@layout/fragment_input"
+        app:destination="@id/fragmentInput" />
   </fragment>
   <fragment
       android:id="@+id/fragmentGradient"

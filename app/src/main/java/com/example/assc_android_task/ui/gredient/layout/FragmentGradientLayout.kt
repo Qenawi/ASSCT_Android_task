@@ -6,10 +6,12 @@ import com.example.assc_android_task.databinding.FragmentGradientBinding
 import com.example.assc_android_task.domain.base.viewModel
 import com.example.assc_android_task.domain.dagger.application.ASSCTApplication
 
+//MARK:- handle injection
 fun FragmentGradient.injectHere() {
   ASSCTApplication.appComponent.inject(this)
 }
 
+//MARK:- handle view binding
 fun FragmentGradient.setupBinding(): View {
   with(binding as FragmentGradientBinding) {
     this.viewModel = this@setupBinding.viewModel
@@ -17,11 +19,13 @@ fun FragmentGradient.setupBinding(): View {
   return binding.root
 }
 
+//MARK:- setup view model
 fun FragmentGradient.setupViewModel() {
   viewModel = viewModel(factory) {
     //MARK:- read args
     val args: FragmentGradientArgs by navArgs()
     data = args.readList?.toCollection(ArrayList()) ?: arrayListOf()
+    view = this@setupViewModel
     //MARK:- pull each gradient content
     pullData()
   }

@@ -10,6 +10,12 @@ class RetrofitService @Inject constructor(retrofit: Retrofit) : RetrofitApi {
     app_key: String,
     ingred: String
   ) = api.single_food_item(app_id, app_key, ingred)
+
+  override fun getRecipeDetails(
+    app_id: String,
+    app_key: String,
+    recipe: HashMap<String, Any>
+  ) = api.getRecipeDetails(app_id, app_key, recipe)
 }
 
 
