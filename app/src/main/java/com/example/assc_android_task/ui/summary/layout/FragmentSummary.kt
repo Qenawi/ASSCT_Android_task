@@ -9,6 +9,7 @@ import com.example.assc_android_task.R
 import com.example.assc_android_task.domain.base.BaseFragment
 import com.example.assc_android_task.ui.summary.protocol.SummaryViewProtocol
 import com.example.assc_android_task.ui.summary.router.SummaryRouter
+import com.example.assc_android_task.ui.summary.viewmodel.SummaryViewModel
 import javax.inject.Inject
 
 class FragmentSummary : BaseFragment(), SummaryViewProtocol {

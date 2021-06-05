@@ -5,7 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class AdapterItem(
-  val amount: Int?,
-  val percent: Double?,
+  val amount: String?,
+  val percent: String?,
   val title: String?
 ) : Parcelable

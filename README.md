@@ -2,7 +2,7 @@
 Nutrition-App
 - InputScreen (Done)
 - recipe gradient (Done)
-- recipe summary (****)
+- recipe summary (Done)
 - Screen Rotation (Done)
 
 #Technology

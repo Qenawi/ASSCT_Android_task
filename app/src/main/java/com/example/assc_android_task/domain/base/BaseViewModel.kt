@@ -24,7 +24,7 @@ open class BaseViewModel<T>(
   private val useCase: T
 ) : AndroidViewModel(application) {
   val toastMutable: MutableLiveData<Failure> = MutableLiveData()
-  val obsShowProgressBar = ObservableBoolean()
+  val obsShowProgressBar = ObservableBoolean(false)
 
   /**
    * This is the job for all coroutines started by this ViewModel.

@@ -4,6 +4,8 @@ import com.example.assc_android_task.domain.dagger.ViewModelFactoryBindingModule
 import com.example.assc_android_task.domain.dagger.modules.gradient_feat.GradientModule
 import com.example.assc_android_task.domain.dagger.modules.input_feat.InputModule
 import com.example.assc_android_task.domain.dagger.modules.network.NetworkModule
+import com.example.assc_android_task.domain.dagger.modules.summary_feat.SummaryModule
+import com.example.assc_android_task.ui.summary.viewmodel.SummaryViewModel
 import dagger.Module
 
 @Module(
@@ -11,7 +13,8 @@ import dagger.Module
     ViewModelFactoryBindingModule::class,
     NetworkModule::class,
     InputModule::class,
-    GradientModule::class
+    GradientModule::class,
+    SummaryModule::class
   ]
 )
 
