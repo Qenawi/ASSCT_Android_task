@@ -45,9 +45,9 @@ class IngredientUseCase @Inject constructor(
     }
   }
 
-  //MARK:-test Class
+  //MARK:- merging request to build ingredient item <name, weight , count , ..>
   data class CustomDiffered(
-    val name: Either<Failure, AdapterItem>,
-    val name2: Either<Failure, NamingRequestModule>
+    val calorieContent: Either<Failure, AdapterItem>,
+    val namingContent: Either<Failure, NamingRequestModule>
   )
 }

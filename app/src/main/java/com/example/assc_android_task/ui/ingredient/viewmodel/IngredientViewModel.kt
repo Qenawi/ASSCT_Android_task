@@ -2,8 +2,6 @@ package com.example.assc_android_task.ui.ingredient.viewmodel
 
 import android.app.Application
 import com.example.assc_android_task.domain.base.BaseViewModel
-import com.example.assc_android_task.domain.network.Either
-import com.example.assc_android_task.domain.network.Failure
 import com.example.assc_android_task.domain.network.toResultOrNull
 import com.example.assc_android_task.ui.ingredient.layout.IngredientAdapter
 import com.example.assc_android_task.ui.ingredient.model.AdapterItem
@@ -56,11 +54,11 @@ private fun IngredientViewModel.merge(
   call: (AdapterItem) -> Unit = {}
 ) {
   val mergedITem = AdapterItem()
-  item.name.toResultOrNull { details ->
+  item.calorieContent.toResultOrNull { details ->
     mergedITem.cal = details?.cal
     mergedITem.weight = details?.weight
   }
-  item.name2.toResultOrNull { naming ->
+  item.namingContent.toResultOrNull { naming ->
     mergedITem.title = naming?.parsed?.getOrNull(0)?.food?.label
     mergedITem.unit = naming?.parsed?.getOrNull(0)?.measure?.label
     mergedITem.count = naming?.parsed?.getOrNull(0)?.quantity?.toString()
