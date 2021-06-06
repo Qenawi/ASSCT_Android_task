@@ -10,8 +10,8 @@ import retrofit2.http.Query
 
 interface RetrofitApi {
   companion object {
-    val AppId = "16dd29a8"
-    val AppKey = "dc5f77af3447602947a6a262c875c5e3"
+    val AppId = "e90c9882"
+    val AppKey = "8b90176775c87a1c5c90dea9e7157de5"
     private const val single_food_item = "nutrition-data"
     private const val single_food_item_naming = "food-database/v2/parser"
     private const val nutrition_details = "nutrition-details"

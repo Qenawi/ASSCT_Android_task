@@ -43,12 +43,11 @@ private fun IngredientViewModel.onResult(data: List<CustomDiffered>) {
     }
 
   }
-
-  obsShowProgressBar.set(false)
   adapter.setList(result)
   closeProgress()
 }
 
+//MARK:- merge adapter item from mixed Either result
 private fun IngredientViewModel.merge(
   item: CustomDiffered,
   call: (AdapterItem) -> Unit = {}
