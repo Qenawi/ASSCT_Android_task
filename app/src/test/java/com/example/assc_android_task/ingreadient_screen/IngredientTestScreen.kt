@@ -5,12 +5,13 @@ import com.example.assc_android_task.domain.network.mStringToJsonElement
 import com.example.assc_android_task.mock_server.MockServerResponse
 import com.example.assc_android_task.ui.ingredient.model.AdapterItem
 import junit.framework.Assert
+import junit.framework.Assert.assertEquals
 import org.junit.Test
 
 class IngredientTestScreen {
   @Test
   fun mainInputScreen() {
-    Assert.assertEquals(4, 2 + 2)
+    assertEquals(4, 2 + 2)
   }
 
   //MARK:- test json mapping result to ui object
@@ -24,6 +25,6 @@ class IngredientTestScreen {
   fun testIngredientResponseFail() {
     val json = MockServerResponse.notValidResponseIngredientItem.mStringToJsonElement()
       .mMapToObject<AdapterItem>()
-    Assert.assertNull(json?.weight)
+    assertEquals(json?.weight, 0.0)
   }
 }
