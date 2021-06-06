@@ -5,9 +5,10 @@ import com.google.gson.JsonElement
 import org.json.JSONObject
 import retrofit2.Call
 
+//MARK:- Call network call and return Either<error, response>
 fun <T : Any, R : Any> pullFromRequest(
   network: NetworkHandler,
-  call: retrofit2.Call<T>,
+  call: Call<T>,
   validate: (R?) -> Boolean,
   transform: (T) -> R?,
   acceptunFormated: Boolean = false
@@ -33,13 +34,12 @@ fun <T, R> refactorRequest(
 ): Either<Failure, R> {
   return try {
     val response = call.execute()
-    response
     when (response.isSuccessful) {
       true -> {
 
         val body = response.body()
         val eTrans =
-          if (acceptunFormated) GeneralResponseObject() else (body as JsonElement).mMapToObject<GeneralResponseObject>()
+          if (acceptunFormated) GeneralResponseObject() else (body as JsonElement).mMapToObject()
         eTrans?.let { aa ->
           if (aa.data != null || acceptunFormated) {
             val transOut = transform(body!!)
@@ -49,14 +49,14 @@ fun <T, R> refactorRequest(
             } else {
               Either.Left(
                 Failure.EmptyResult.setArgs(
-                  aa.message_one ?: aa.message_two ?: "UNKOWNERRO"
+                  aa.message ?: "NetWork Error"
                 )
               )
             }
           } else {
             Either.Left(
               Failure.EmptyResult.setArgs(
-                aa.message_one ?: aa.message_two ?: aa.message_three ?: "unkown"
+                aa.message ?: "NetWork Error"
               )
             )
           }//data object is null
@@ -65,24 +65,26 @@ fun <T, R> refactorRequest(
       false -> {
         Either.Left(
           refactorErrorBodyToFail(
-            response.errorBody()?.toString() ?: ""
+            response.errorBody()?.toString() ?: "NetWork Error"
           )
         )
       }
     }
-  } catch (exception: Exception) {
+  } catch (exception: Exception)
+  {
 
     exception.printStackTrace()
     Either.Left(Failure.ServerError.setArgs(exception.message, exception))
   }
 }
+//MARK:- extract error message in case of network/server error
 
 private fun refactorErrorBodyToFail(string: String): Failure {
   return try {
     val jObjError = JSONObject(string)
     val result = jObjError.mAnyToJsonElement().mMapToObject<GeneralResponseObject>()
     return Failure.EmptyResult.setArgs(
-      result?.message_one ?: result?.message_two ?: result?.message_three
+      result?.message
     )
   } catch (e: Exception) {
     e.printStackTrace()

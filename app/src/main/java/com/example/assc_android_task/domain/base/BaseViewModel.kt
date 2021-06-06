@@ -8,7 +8,10 @@ import androidx.databinding.ObservableBoolean
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -19,6 +22,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 
+//MARK:- BaseViewModel @Docs
 open class BaseViewModel<T>(
   application: Application,
   private val useCase: T
@@ -48,21 +52,25 @@ open class BaseViewModel<T>(
    */
   override fun onCleared() {
     super.onCleared()
-    if (useCase is BaseUseCase)
-      (useCase as BaseUseCase).onCleared()
-    // todo add Use Case OnClear
+    if (useCase is BaseUseCase) useCase.onCleared()
   }
 
   fun setError(message: String?) {
     val f = Failure.ValidationError.setArgs(message, null)
     toastMutable.postValue(f)
+    closeProgress()
+  }
+
+  fun showProgress() {
+    obsShowProgressBar.set(true)
+  }
+
+  fun closeProgress() {
+    obsShowProgressBar.set(false)
   }
 }
 
-
-
-fun BaseViewModel<*>.ctx() = this.getApplication<ASSCTApplication>()
-
+//MARK:- ViewModel Extensions
 
 inline fun <reified T : ViewModel> Fragment.viewModel(
   factory: ViewModelProvider.Factory,
@@ -79,8 +87,14 @@ inline fun <reified T : ViewModel> Fragment.viewModel(body: T.() -> Unit): T {
   return vm
 }
 
-fun BaseFragment.close() = fragmentManager?.popBackStack()
 fun <B : ViewDataBinding> BaseFragment.binding(container: ViewGroup): B =
   DataBindingUtil.inflate(layoutInflater, layoutId(), container, false)
 
-val BaseFragment.appContext: Context get() = activity?.applicationContext!!
+fun <T : Any, L : LiveData<T>> LifecycleOwner.observe(
+  liveData: L,
+  body: (T?) -> Unit
+) {
+
+  // todo mange lifeCycle
+  liveData.observe(this, Observer(body))
+}

@@ -12,6 +12,7 @@ import com.example.assc_android_task.ui.summary.router.SummaryRouter
 import com.example.assc_android_task.ui.summary.viewmodel.SummaryViewModel
 import javax.inject.Inject
 
+//MARK:- FragmentSummary @Docs
 class FragmentSummary : BaseFragment(), SummaryViewProtocol {
   override fun layoutId() = R.layout.fragment_summary
   override fun viewLifeCycleOwner() = viewLifecycleOwner

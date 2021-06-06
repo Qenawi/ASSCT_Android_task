@@ -2,7 +2,7 @@ package com.example.assc_android_task.domain.dagger
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.assc_android_task.ui.gredient.viewmodel.GradientViewModel
+import com.example.assc_android_task.ui.ingredient.viewmodel.IngredientViewModel
 import com.example.assc_android_task.ui.input.viewmodel.InputViewModel
 import com.example.assc_android_task.ui.summary.viewmodel.SummaryViewModel
 import dagger.Binds
@@ -54,8 +54,8 @@ abstract class ViewModelFactoryBindingModule {
 
   @Binds
   @IntoMap
-  @ViewModelKey(GradientViewModel::class)
-  abstract fun bindGradientViewModel(vm: GradientViewModel): ViewModel
+  @ViewModelKey(IngredientViewModel::class)
+  abstract fun bindIngredientViewModel(vm: IngredientViewModel): ViewModel
 
   @Binds
   @IntoMap

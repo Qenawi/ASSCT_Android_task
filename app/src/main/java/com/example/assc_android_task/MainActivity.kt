@@ -8,6 +8,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.assc_android_task.domain.dagger.application.ASSCTApplication
 
 class MainActivity : AppCompatActivity() {
+  //MARK:- main navigation controller
   private var navController: NavController? = null
 
   override fun onCreate(savedInstanceState: Bundle?) {

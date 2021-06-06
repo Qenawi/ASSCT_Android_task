@@ -7,35 +7,35 @@
   <fragment
       android:id="@+id/fragmentInput"
       android:name="com.example.assc_android_task.ui.input.layout.FragmentInput"
-      tools:layout="@layout/fragment_input"
-      android:label="FragmentInput">
+      android:label="Recipe-Input"
+      tools:layout="@layout/fragment_input">
     <action
-        android:id="@+id/action_fragmentInput_to_fragmentGradient"
-        app:destination="@id/fragmentGradient" />
+        android:id="@+id/action_fragmentInput_to_fragmentIngredient"
+        app:destination="@id/fragmentIngredient" />
   </fragment>
   <fragment
       android:id="@+id/fragmentSummary"
       android:name="com.example.assc_android_task.ui.summary.layout.FragmentSummary"
-      tools:layout="@layout/fragment_summary"
-      android:label="FragmentSummary">
+      android:label="Summary-Details"
+      tools:layout="@layout/fragment_summary">
+    <action
+        android:id="@+id/action_fragmentSummary_to_fragmentInput"
+        app:destination="@id/fragmentInput"
+        app:popUpTo="@id/fragmentInput"
+        app:popUpToInclusive="true" />
     <argument
         android:name="read_list"
         android:defaultValue="@null"
         app:argType="string[]"
         app:nullable="true" />
-    <action
-        android:id="@+id/action_fragmentSummary_to_fragmentInput"
-        app:popUpToInclusive="true"
-        app:popUpTo="@layout/fragment_input"
-        app:destination="@id/fragmentInput" />
   </fragment>
   <fragment
-      android:id="@+id/fragmentGradient"
-      android:name="com.example.assc_android_task.ui.gredient.layout.FragmentGradient"
-      tools:layout="@layout/fragment_gradient"
-      android:label="FragmentGradient">
+      android:id="@+id/fragmentIngredient"
+      android:name="com.example.assc_android_task.ui.ingredient.layout.FragmentIngredient"
+      android:label="Ingredient-details"
+      tools:layout="@layout/fragment_ingredient">
     <action
-        android:id="@+id/action_fragmentGradient_to_fragmentSummary"
+        android:id="@+id/action_fragmentIngredient_to_fragmentSummary"
         app:destination="@id/fragmentSummary" />
     <argument
         android:name="read_list"

@@ -14,6 +14,7 @@ import com.example.assc_android_task.ui.input.viewmodel.InputViewModel
 import kotlinx.android.synthetic.main.fragment_input.button
 import javax.inject.Inject
 
+//MARK:- FragmentInput @Docs
 class FragmentInput : BaseFragment(), InputViewProtocol {
   override fun layoutId() = R.layout.fragment_input
   override fun viewLifeCycleOwner() = viewLifecycleOwner
@@ -36,7 +37,7 @@ class FragmentInput : BaseFragment(), InputViewProtocol {
     return setupBinding()
   }
 
-  override fun openGradient(data: ArrayList<String>) {
-    FragmentInputRouter.openGradientList(fragment = this, data = data)
+  override fun openIngredient(data: ArrayList<String>) {
+    FragmentInputRouter.openIngredientList(fragment = this, data = data)
   }
 }

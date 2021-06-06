@@ -11,6 +11,7 @@ import com.example.assc_android_task.ui.summary.repo.SummaryUseCase
 import javaslang.control.Either
 import javax.inject.Inject
 
+//MARK:- SummaryViewModel @Docs
 class SummaryViewModel @Inject constructor(
   app: Application,
   val useCase: SummaryUseCase
@@ -19,19 +20,21 @@ class SummaryViewModel @Inject constructor(
   var adapter = SummaryAdapter()
   var dataSrc = ArrayList<String>()
   var view: SummaryViewProtocol? = null
-  fun pullSummary() {
-    obsShowProgressBar.set(true)
-    useCase.getRecipeInfo(dataSrc) { result ->
-      obsShowProgressBar.set(false)
-      result.either(::onRecipeResultFail, ::onRecipeResult)
 
+  //MARK:-  pull recipe summary from network
+  fun pullSummary() {
+    showProgress()
+    useCase.getRecipeInfo(dataSrc) { result ->
+      result.either(::onRecipeResultFail, ::onRecipeResult)
     }
   }
 
-  fun closeAppliction() {
+  //MARK:- on close application selection
+  fun closeApplication() {
     view?.closeApplication()
   }
 
+  //MARK:- on new recipe selection
   fun newRecipe() {
     view?.openNewRecipe()
   }
@@ -40,69 +43,9 @@ class SummaryViewModel @Inject constructor(
 //MARK:- Recipe Result
 private fun SummaryViewModel.onRecipeResult(result: SummaryRequestModel) {
   data.clear()
-
-  data.add(AdapterItem(result.calories.toString(), "", "Calories"))
-  data.add(
-    AdapterItem(
-      "${result.totalNutrients?.fAT?.quantity}${result.totalNutrients?.fAT?.unit}",
-      "${result.totalDaily?.fAT?.quantity}${result.totalDaily?.fAT?.unit}", "Fat"
-    )
-  )
-  data.add(
-    AdapterItem(
-      "${result.totalNutrients?.cHOLE?.quantity}${result.totalNutrients?.fAT?.unit}",
-      "${result.totalDaily?.fAT?.quantity}${result.totalDaily?.cHOLE?.unit}", "Cholesterol"
-    )
-  )
-
-  data.add(
-    AdapterItem(
-      "${result.totalNutrients?.nA?.quantity}${result.totalNutrients?.nA?.unit}",
-      "${result.totalDaily?.fAT?.quantity}${result.totalDaily?.fAT?.unit}", "Sodium"
-    )
-  )
-
-  data.add(
-    AdapterItem(
-      "${result.totalNutrients?.cHOCDF?.quantity}${result.totalNutrients?.cHOCDF?.unit}",
-      "${result.totalDaily?.fAT?.quantity}${result.totalDaily?.fAT?.unit}", "Carbohydrate"
-    )
-  )
-  data.add(
-    AdapterItem(
-      "${result.totalNutrients?.pROCNT?.quantity}${result.totalNutrients?.pROCNT?.unit}",
-      "${result.totalDaily?.fAT?.quantity}${result.totalDaily?.fAT?.unit}", "Protein"
-    )
-  )
-
-  data.add(
-    AdapterItem(
-      "${result.totalNutrients?.vITARAE?.quantity}${result.totalNutrients?.pROCNT?.unit}",
-      "${result.totalDaily?.fAT?.quantity}${result.totalDaily?.vITARAE?.unit}", "Vitamin"
-    )
-  )
-
-  data.add(
-    AdapterItem(
-      "${result.totalNutrients?.cA?.quantity}${result.totalNutrients?.cA?.unit}",
-      "${result.totalDaily?.cA?.quantity}${result.totalDaily?.cA?.unit}", "Calcium"
-    )
-  )
-
-  data.add(
-    AdapterItem(
-      "${result.totalNutrients?.fE?.quantity}${result.totalNutrients?.fE?.unit}",
-      "${result.totalDaily?.fE?.quantity}${result.totalDaily?.fE?.unit}", "iron"
-    )
-  )
-
-  data.add(
-    AdapterItem(
-      "${result.totalNutrients?.k?.quantity}${result.totalNutrients?.k?.unit}",
-      "${result.totalDaily?.k?.quantity}${result.totalDaily?.k?.unit}", "Potassium"
-    )
-  )
+  data.addAll(useCase.convertToAdapterArray(result))
   adapter.setList(data)
+  closeProgress()
 }
 
 private fun SummaryViewModel.onRecipeResultFail(result: Failure) {

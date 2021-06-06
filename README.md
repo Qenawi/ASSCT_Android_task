@@ -1,7 +1,7 @@
 # ASSCT_Android_task
 Nutrition-App
 - InputScreen (Done)
-- recipe gradient (Done)
+- recipe Ingredient (Done)
 - recipe summary (Done)
 - Screen Rotation (Done)
 

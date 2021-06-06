@@ -4,16 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
 
+//MARK:- BaseFragment @Docs
 abstract class BaseFragment : Fragment() {
 
   abstract fun layoutId(): Int
   abstract fun viewLifeCycleOwner(): LifecycleOwner
   lateinit var binding: ViewDataBinding
-  lateinit var dialog: android.app.AlertDialog
 
   override fun onCreateView(
     inflater: LayoutInflater,
@@ -25,10 +26,15 @@ abstract class BaseFragment : Fragment() {
     return binding.root
   }
 
-  open fun onBackPressed() {}
-
   fun closeFragment() {
     requireActivity().onBackPressed()
   }
 }
+
+//MARK:- Toast Extension
+fun Fragment?.toast(st: String?) =
+  this?.context?.let { ctx ->
+    Toast.makeText(ctx, st, Toast.LENGTH_SHORT).show()
+  }
+
 

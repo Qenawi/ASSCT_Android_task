@@ -9,6 +9,7 @@ import com.google.gson.JsonSyntaxException
 import com.google.gson.reflect.TypeToken
 import timber.log.Timber
 
+//MARK:- Main Json Handler @Docs
 fun Map<String, Any>.mMapToJsonElement(): JsonElement = this.hashToJe()
 private fun Map<String, Any>.hashToJe(): JsonElement {
   val type2 = object : TypeToken<HashMap<String, Any>>() {}.type

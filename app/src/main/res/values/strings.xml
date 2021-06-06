@@ -1,13 +1,14 @@
 <resources>
-  <string name="app_name">assc_android_task</string>
+  <string name="app_name">AsscTask</string>
   <!-- input fragment  -->
   <string name="AnalyzeRecipe">AnalyzeRecipe</string>
-  <string name="gradient_show_summry">Recipe Summary</string>
-  <string name="gradient_qty">Qty</string>
-  <string name="gradient_unit">Unit</string>
-  <string name="gradient_weight">Weight</string>
-  <string name="gradient_calories">Calories</string>
-  <!-- gradient fragment  -->
+  <string name="Ingredient_show_summary">Recipe Summary</string>
+  <string name="Ingredient_qty">Qty</string>
+  <string name="Ingredient_unit">Unit</string>
+  <string name="Ingredient_weight">Weight</string>
+  <string name="Ingredient_calories">Calories</string>
+  <string name="keyboard_done">Done</string>
+  <!-- Ingredient fragment  -->
 
   <!-- summary fragment  -->
 

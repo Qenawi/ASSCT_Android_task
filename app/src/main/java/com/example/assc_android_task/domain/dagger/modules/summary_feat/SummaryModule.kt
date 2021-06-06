@@ -2,9 +2,6 @@ package com.example.assc_android_task.domain.dagger.modules.summary_feat
 
 import com.example.assc_android_task.domain.dagger.modules.main.AppFeatures.Companion.DispatcherUseCaseName
 import com.example.assc_android_task.domain.dagger.modules.main.AppFeatures.Companion.UseCaseScopeName
-import com.example.assc_android_task.ui.gredient.repo.GradientRepo
-import com.example.assc_android_task.ui.gredient.repo.GradientUseCase
-import com.example.assc_android_task.ui.input.repo.InputUseCase
 import com.example.assc_android_task.ui.summary.repo.SummaryRepository
 import com.example.assc_android_task.ui.summary.repo.SummaryUseCase
 import dagger.Module

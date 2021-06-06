@@ -1,10 +1,9 @@
-package com.example.assc_android_task.domain.dagger.modules.gradient_feat
+package com.example.assc_android_task.domain.dagger.modules.Ingredient_feat
 
 import com.example.assc_android_task.domain.dagger.modules.main.AppFeatures.Companion.DispatcherUseCaseName
 import com.example.assc_android_task.domain.dagger.modules.main.AppFeatures.Companion.UseCaseScopeName
-import com.example.assc_android_task.ui.gredient.repo.GradientRepo
-import com.example.assc_android_task.ui.gredient.repo.GradientUseCase
-import com.example.assc_android_task.ui.input.repo.InputUseCase
+import com.example.assc_android_task.ui.ingredient.repo.IngredientRepo
+import com.example.assc_android_task.ui.ingredient.repo.IngredientUseCase
 import dagger.Module
 import dagger.Provides
 import kotlinx.coroutines.CoroutineDispatcher
@@ -17,10 +16,10 @@ import kotlin.coroutines.CoroutineContext
 
 //MARK:-
 @Module
-class GradientModule {
+class IngredientModule {
 
   companion object {
-    private const val DaggerKey = "GradientModule"
+    private const val DaggerKey = "IngredientModule"
   }
 
   @Named(DaggerKey + UseCaseScopeName)
@@ -37,16 +36,16 @@ class GradientModule {
   fun provideCoroutinesMainDispatcher(): CoroutineDispatcher = Dispatchers.Main
 
   @Provides
-  fun provideGradientRepo(repo: GradientRepo.NetWork): GradientRepo = repo
+  fun provideIngredientRepo(repo: IngredientRepo.NetWork): IngredientRepo = repo
 
   @Provides
-  fun provideGradientUseCase(
-    repo: GradientRepo,
+  fun provideIngredientUseCase(
+    repo: IngredientRepo,
     @Named(DaggerKey + UseCaseScopeName)
     scope: CoroutineScope,
     @Named(DaggerKey + DispatcherUseCaseName)
     dispatcher: CoroutineDispatcher
-  ): GradientUseCase {
-    return GradientUseCase(repo, scope, dispatcher)
+  ): IngredientUseCase {
+    return IngredientUseCase(repo, scope, dispatcher)
   }
 }

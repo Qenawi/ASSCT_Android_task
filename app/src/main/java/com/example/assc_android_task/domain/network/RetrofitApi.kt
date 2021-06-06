@@ -13,11 +13,19 @@ interface RetrofitApi {
     val AppId = "16dd29a8"
     val AppKey = "dc5f77af3447602947a6a262c875c5e3"
     private const val single_food_item = "nutrition-data"
+    private const val single_food_item_naming = "food-database/v2/parser"
     private const val nutrition_details = "nutrition-details"
   }
 
   @GET(single_food_item)
-  fun single_food_item(
+  fun singleFoodItem(
+    @Query("app_id") app_id: String,
+    @Query("app_key") app_key: String,
+    @Query("ingr", encoded = false) ingred: String
+  ): Call<JsonElement>
+
+  @GET(single_food_item_naming)
+  fun singleFoodItemNaming(
     @Query("app_id") app_id: String,
     @Query("app_key") app_key: String,
     @Query("ingr", encoded = false) ingred: String

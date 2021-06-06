@@ -6,6 +6,7 @@ import com.example.assc_android_task.domain.base.BaseViewModel
 import com.example.assc_android_task.ui.input.protocol.InputViewProtocol
 import com.example.assc_android_task.ui.input.repo.InputUseCase
 import javax.inject.Inject
+//MARK:- InputViewModel @Docs
 
 class InputViewModel @Inject constructor(
   app: Application,
@@ -25,6 +26,6 @@ class InputViewModel @Inject constructor(
   //MARK:- Split Input Data
    private fun splitAndSend() {
     val splitedArray = useCase.mapStringToArrayList(inputString.get() ?: "")
-    view?.openGradient(splitedArray)
+    view?.openIngredient(splitedArray)
   }
 }

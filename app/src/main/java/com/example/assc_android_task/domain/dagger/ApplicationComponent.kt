@@ -5,12 +5,11 @@ import com.example.assc_android_task.MainActivity
 import com.example.assc_android_task.domain.dagger.application.ASSCTApplication
 import com.example.assc_android_task.domain.dagger.modules.main.AppFeatures
 import com.example.assc_android_task.domain.dagger.modules.main.AppModule
-import com.example.assc_android_task.ui.gredient.layout.FragmentGradient
+import com.example.assc_android_task.ui.ingredient.layout.FragmentIngredient
 import com.example.assc_android_task.ui.input.layout.FragmentInput
 import com.example.assc_android_task.ui.summary.layout.FragmentSummary
 import dagger.BindsInstance
 import dagger.Component
-import dagger.android.AndroidInjection
 import dagger.android.AndroidInjectionModule
 import javax.inject.Singleton
 
@@ -36,7 +35,7 @@ interface ApplicationComponent {
   fun inject(app: ASSCTApplication)
   fun inject(mainActivity: MainActivity)
   //MARK:- fragment
-  fun inject(fragmentGradient: FragmentGradient)
+  fun inject(fragmentIngredient: FragmentIngredient)
   fun inject(fragmentInput: FragmentInput)
   fun inject(fragmentSummary: FragmentSummary)
   //MARK:- viewModel

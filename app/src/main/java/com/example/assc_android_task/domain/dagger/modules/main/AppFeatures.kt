@@ -1,7 +1,7 @@
 package com.example.assc_android_task.domain.dagger.modules.main
 
 import com.example.assc_android_task.domain.dagger.ViewModelFactoryBindingModule
-import com.example.assc_android_task.domain.dagger.modules.gradient_feat.GradientModule
+import com.example.assc_android_task.domain.dagger.modules.Ingredient_feat.IngredientModule
 import com.example.assc_android_task.domain.dagger.modules.input_feat.InputModule
 import com.example.assc_android_task.domain.dagger.modules.network.NetworkModule
 import com.example.assc_android_task.domain.dagger.modules.summary_feat.SummaryModule
@@ -13,7 +13,7 @@ import dagger.Module
     ViewModelFactoryBindingModule::class,
     NetworkModule::class,
     InputModule::class,
-    GradientModule::class,
+    IngredientModule::class,
     SummaryModule::class
   ]
 )

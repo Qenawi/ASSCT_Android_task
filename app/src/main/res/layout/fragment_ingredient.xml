@@ -16,14 +16,14 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:enabled="@{!viewModel.obsShowProgressBar}"
-        android:onClick="@{()->viewModel.OpenSummary()}"
-        android:text="@string/gradient_show_summry"
+        android:onClick="@{()->viewModel.openSummary()}"
+        android:text="@string/Ingredient_show_summary"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         />
-    <!-- gradient list -->
+    <!-- Ingredient list -->
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -37,14 +37,14 @@
         app:layout_constraintTop_toTopOf="parent"
         adapter="@{viewModel.adapter}"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/gradient_item"
+        tools:listitem="@layout/Ingredient_item"
         />
   </androidx.constraintlayout.widget.ConstraintLayout>
   <!-- dataSrc -->
   <data>
     <variable
         name="viewModel"
-        type="com.example.assc_android_task.ui.gredient.viewmodel.GradientViewModel"
+        type="com.example.assc_android_task.ui.ingredient.viewmodel.IngredientViewModel"
         />
   </data>
 </layout>
